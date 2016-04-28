@@ -1,4 +1,6 @@
 select * from test_table1
+select * from test_table1 where col_1 is not null
+select * from test_table1 where col_1 is null
 select * from test_table1 where col_1='123'
 select * from test_table1 where col_1='123' and col_2=8
 select * from test_table1 where col_1=?
@@ -17,7 +19,6 @@ SELECT EMPLOYEEIDNO FROM test_table1 WHERE LASTNAME LIKE 'L%'
 SELECT DISTINCT SELLERID, OWNERLASTNAME, OWNERFIRSTNAME FROM test_table1, test_table2 WHERE SELLERID = OWNERID ORDER BY OWNERLASTNAME, OWNERFIRSTNAME, OWNERID
 SELECT OWNERFIRSTNAME, OWNERLASTNAME FROM test_table1 WHERE EXISTS (SELECT * FROM test_table2 WHERE ITEM = ?)
 SELECT BUYERID, ITEM FROM test_table1 WHERE PRICE >= ALL (SELECT PRICE FROM test_table2)
-SELECT BUYERID FROM test_table1 UNION SELECT BUYERID FROM test_table2
 SELECT OWNERID, 'is in both Orders & Antiques' FROM test_table1 a, test_table2 b WHERE a.OWNERID = b.BUYERID and a.type in (?,?,?)
 SELECT DISTINCT SELLERID, OWNERLASTNAME, OWNERFIRSTNAME FROM test_table1, noconvert_table WHERE SELLERID = OWNERID ORDER BY OWNERLASTNAME, OWNERFIRSTNAME, OWNERID
 SELECT a.* FROM test_table1 a, noconvert_table b WHERE a.SELLERID = b.OWNERID 
